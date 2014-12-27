@@ -1,0 +1,8 @@
+tidtabell :: (Int) -> [Int]
+tidtabell x | x < 1 = error "x är för litet"
+            | x > 1439 = []
+            | otherwise = x:tidtabell2 x x
+tidtabell2 :: Int -> Int -> [Int]
+tidtabell2 x k 
+            | k+x > 1439 = []
+            | otherwise = k+x:tidtabell2 x (k+x)
