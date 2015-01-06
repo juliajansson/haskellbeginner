@@ -56,7 +56,7 @@ then
 
 and finally
 
-  60
+    60
 
 Almost all of Haskell follows this same idea. This means that quite some of your mathematical training is very helful in learning programming. And the opposite is also true: by learning programming in Haskell you will improve your understanding of mathematics!
 
@@ -72,6 +72,8 @@ The first example in TryHaskell.com is
 
 Let's take this apart:
 
+| Part | Explanation
+| ---- | ----
 | let      | marks the start of a named expression (called "a declaration")
 | x = 4    | is the declaration that x can now be used instead of 4
 | in       | marks the start of the expression part
