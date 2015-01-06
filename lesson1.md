@@ -66,19 +66,20 @@ To compute more complex expressions it is possible (and recommended) to name and
 
 The first example in TryHaskell.com is
 
-let  x = 4   in    x * x
+    let  x = 4   in    x * x
 
 (which evaluates to 16).
 
 Let's take this apart:
-  let      marks the start of a named expression (called "a declaration")
-  x = 4    is the declaration that x can now be used instead of 4
-  in       marks the start of the expression part
-  x * x    is an expression using the new name  
+
+| let      | marks the start of a named expression (called "a declaration")
+| x = 4    | is the declaration that x can now be used instead of 4
+| in       | marks the start of the expression part
+| x * x    | is an expression using the new name  
 
 In this case writing 4 * 4 directly would have been shorter, but if x is big we start to gain:
 
-let  r = 1738   in   pi*r^2
+    let  r = 1738   in   pi*r^2
 
 Note that the name can also help to explain what is going on (can you guess)?
 
@@ -86,15 +87,15 @@ Note that the name can also help to explain what is going on (can you guess)?
 
 The "name and reuse" idea is really at the core of computing and we can reuse not only simple expressions but also functions.
 
-  let   area r = pi*r^2   in  (area 2) / (area 1)
+    let   area r = pi*r^2   in  (area 2) / (area 1)
 
 Here we have defined a function called area which given any value r will compute the area of a circle of radius r.
 
-  let   area r = pi*r^2   in  map area [1,2..10]
+    let   area r = pi*r^2   in  map area [1,2..10]
 
 We can also combine naming functions and values
 
-  let   area r = pi*r^2   in  let areas = map area [1,2..10]   in   map round areas
+    let   area r = pi*r^2   in  let areas = map area [1,2..10]   in   map round areas
 
 
 #Whishful thinking
