@@ -100,9 +100,26 @@ We can also combine naming functions and values
     let   area r = pi*r^2   in  let areas = map area [1,2..10]   in   map round areas
 
 
-#Whishful thinking
+#Wishful thinking
 
-(To be written;-)
+When solving problems it is very often convenient to use the principle
+of "wishful thinking": when solving P, try to come up with simpler
+problems Q, R and S which (when solved) make P easy to solve. Then
+just describe the solution of P in terms of the solutions of Q, R, and
+S. If done right this reduces the complexity of the top level problem
+quite a bit. When the top level is done the next step is to solve the
+smaller problems. We often need to split (some of) them up too and so
+on. (It also happens that we fail and have to try again from the
+start, but then one has usually learned something along the way which
+helps in splitting the problem up in a different way.)
+
+As an example take P = sorting a list. Then an example could be
+* Q = split the list into smaller parts (call them left and right)
+* R = sort the left and right parts
+* S = merge the two (now sorted) parts into a sorted final result.
+
+In Haskell a "problem" is often just the type of a function. And a
+solution is some (well-behaved) function of that type.
 
 #The Haskell calculator: ghci
 
