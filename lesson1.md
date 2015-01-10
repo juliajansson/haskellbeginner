@@ -14,12 +14,12 @@ In Haskell every "value" (like 3, "Hello", [1,7,3,8], True) has a "type" (like I
 
 Computer languages in general are very picky about the exact characters used and you will certainly receive quite a few error messages when you try out even simple expressions. This "pickyness" is nothing to worry about and is intended as a help to the user (the programmer). In the beginning the error messages can be quite difficult to understand, but hopefully that will improve over time.
 
-The very first examples at tryhaskell.com are
+The very first examples at tryhaskell.org are
   23 * 36
 and
   reverse "hello"
 
-In the first part of the lesson I want you to try out some examples using the tryhaskell.com web site.
+In the first part of the lesson I want you to try out some examples using the tryhaskell.org web site.
 
 # Values and expressions
 
@@ -64,7 +64,7 @@ Almost all of Haskell follows this same idea. This means that quite some of your
 
 To compute more complex expressions it is possible (and recommended) to name and reuse expressions. An example
 
-The first example in TryHaskell.com is
+The first example in TryHaskell.org is
 
     let  x = 4   in    x * x
 
@@ -99,31 +99,10 @@ We can also combine naming functions and values
 
     let   area r = pi*r^2   in  let areas = map area [1,2..10]   in   map round areas
 
+#For next time: The Haskell calculator: ghci
 
-#Wishful thinking
+We have used https://tryhaskell.org/ for now, but as homework for next time please install https://www.haskell.org/platform/ which gives you access to Haskell also off-line.
 
-When solving problems it is very often convenient to use the principle
-of "wishful thinking": when solving P, try to come up with simpler
-problems Q, R and S which (when solved) make P easy to solve. Then
-just describe the solution of P in terms of the solutions of Q, R, and
-S. If done right this reduces the complexity of the top level problem
-quite a bit. When the top level is done the next step is to solve the
-smaller problems. We often need to split (some of) them up too and so
-on. (It also happens that we fail and have to try again from the
-start, but then one has usually learned something along the way which
-helps in splitting the problem up in a different way.)
+Installing software can be difficult if you're not used to it so try to find some local helper or ask on the course mailing list.
 
-As an example take P = sorting a list. Then an example could be
-* Q = split the list into smaller parts (call them left and right)
-* R = sort the left and right parts
-* S = merge the two (now sorted) parts into a sorted final result.
-
-In Haskell a "problem" is often just the type of a function. And a
-solution is some (well-behaved) function of that type.
-
-#The Haskell calculator: ghci
-
-We have used tryhaskell.org for now, but as homework for next time please install haskell-platform which gives you access to Haskell also off-line.
-
-(More to be filled in)
 
