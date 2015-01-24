@@ -16,3 +16,11 @@ So now hopefully you have installed Haskell on windows.
 
 [Installing Notepad ++](http://notepad-plus-plus.org/)
 -----
+
+## Using winghci with Notepad++
+
+:set editor "C:/Program Files (x86)/Notepad++"
+
+## Wanted: beginner-friendly instructions for install emacs on Windows
+
+Contributions welcome!
