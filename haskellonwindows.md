@@ -1,5 +1,7 @@
-[So you're going to install Haskell on Windows! Great!](www.haskell.org/platform)
+So you're going to install Haskell on Windows! Great!
 ----------------------------
+Start with visiting the page:
+https://www.haskell.org/platform/
 Go to the Windows icon.
 Click one of the links either the 32bit or 64bit. The safest version is to take the 32bit.
 
