@@ -14,5 +14,5 @@ When it has finished downloading you open the installing pakage, and you agree, 
 
 So now hopefully you have installed Haskell on windows. 
 
-[Installing Notepad ++
-------](http://notepad-plus-plus.org/)
+[Installing Notepad ++](http://notepad-plus-plus.org/)
+-----
