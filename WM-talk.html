@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+# High School Haskell - an experience report
+
+What does it take to set up an introductory "Haskell course" for beginners (15-year olds)?
+
+* A group of interested pupils (my daughter and a circle of friends)
+* A place to meet, or suitable communication technology
+* A time to meet (non-trivial!)
+* A very low threshold starting point Haskell environment
+
+---
+
+# Online resources are key 
+
+Some parts are easy for the pupils
+* Registering web service account, chatting, using skype
+
+Some things are harder
+* Editor?
+* Terminal window?
+* Regular computer access (with keybord, ...)
+
+We used 
+
+  https://tryhaskell.org/
+
+with good results in the first lesson.
+
+---
+
+# Communication technology during the meetings: non-trivial
+
+* Should be easy, just use skype (for example)?
+* In practice: 
+  * connection problems, 
+  * microphone problems, 
+  * mix of devices: skype on mobile, but keyboard on the computer
+  * ...
+* We have used Skype + Google Hangouts
+  * rather bumpy ride - needs practice
+
+---
+
+# Time to meet and communication between meetings: non-trivial
+
+* Doodle for a meeting time turned out difficult
+  * email is less used than chat (facebook messenger, KIK, etc.)
+  * hard to get answers well in advance (>4 days was our goal)
+  * even with answers, many late cancellations
+
+---
+
+# Contents: lesson 1
+
+##Expressions and types
+
+  23 * 36, reverse "hello"
+
+##Expressions and their values: syntax trees + computing
+
+         *                 *                *   
+        / \               / \              / \  
+       /   \    --->     /   \   --->     /   \   --->    60
+      +     +           20    +          20    3
+     / \   / \               / \ 
+    17  3  2  1              2  1
+
+Connect to mathematics (motivation through school relevance).
+
+---
+# Lesson 1: cont.
+
+##Name and reuse: let-expressions
+
+    let  x = 4   in    x * x
+    let  r = 1738   in   pi*r^2
+
+##Functions and map
+
+    let   area r = pi*r^2   in  (area 2) / (area 1)
+    let   area r = pi*r^2   in  map area [1,2..10]
+    let   area r = pi*r^2   in  let areas = map area [1,2..10]   in   map round areas
+
+---
+
+#Lesson 2: 
+
+##Important new concepts: Programs, computers and compilers
+
+* a program is a precise description of something you want the computer to compute(;-)
+    * a program can have several forms: source code, machine code, etc.
+    * source code is a human-readable (text) form of a program
+    * machine code is a CPU-readable (binary) form of a program
+* a CPU (Central Processing Unit) is the core of a computer
+    * the CPU can only run programs in binary "machine code" form (unreadable for humans)
+* a compiler is a translator from source code to (some form of) machine code
+
+---
+#Lesson 2: cont.
+
+##The principle of "Wishful thinking" (divide-and-conquer)
+
+* When solving P, split into problems Q, R and S which (when solved) make P easy to solve. 
+* Solve P in terms of the solutions of Q, R, and S. 
+* Solve the smaller problems (recursively). 
+
+As an example take P = sorting a list. Then an example could be
+* Q = split the list into smaller parts (call them left and right)
+* R = sort the left and right parts
+* S = merge the two (now sorted) parts into a sorted final result.
+
+In Haskell a "problem" is often just the type of a function. And a
+solution is some (well-behaved) function of that type.
+
+---
+
+##Software installation is hard (individual help needed)
+
+* https://www.haskell.org/platform/
+
+* An editor
+
+I use [emacs](http://www.gnu.org/software/emacs/) but it might be easier to start with
+* Windows: [Notepad++](http://notepad-plus-plus.org/)
+* Linux: [gedit](http://en.wikipedia.org/wiki/Gedit)
+* MacOS: ?
+
+* A terminal (or winghci on Windows)
+
+---
+
+#Summing up
+
+* Communication is difficult
+* Installing is difficult
+* Tryhaskell.org is great (for a start)
+
+TODO: 
+* development environment online (FP complete?)
+* stable communication solutions needed!
+  * text chat (works but often only on the mobile device)
+  * audio (works, but breaks down pretty often))
+  * screen sharing - only worked for one (via Google Hangouts)
+  * collaborative editing (codepad.co)
+
+
+    </textarea>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
