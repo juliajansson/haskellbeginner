@@ -20,6 +20,7 @@
     <textarea id="source">
 
 # High School Haskell - an experience report
+(Patrik Jansson, Software Technology Winter Meeting, Särö, 2015-02-03)
 
 What does it take to set up an introductory "Haskell course" for beginners (15-year olds)?
 
@@ -92,7 +93,7 @@ Connect to mathematics (motivation through school relevance).
 
 ##Name and reuse: let-expressions
 
-    let  x = 4   in    x * x
+    let  x = 4      in   x * x
     let  r = 1738   in   pi*r^2
 
 ##Functions and map
@@ -115,10 +116,14 @@ Connect to mathematics (motivation through school relevance).
     * the CPU can only run programs in binary "machine code" form (unreadable for humans)
 * a compiler is a translator from source code to (some form of) machine code
 
+Note:
+* Problematics [wikipedia entry for Computer program](http://en.wikipedia.org/wiki/Computer_program)
+
 ---
 #Lesson 2: cont.
 
-##The principle of "Wishful thinking" (divide-and-conquer)
+##The principle of "Wishful thinking" 
+(divide-and-conquer)
 
 * When solving P, split into problems Q, R and S which (when solved) make P easy to solve. 
 * Solve P in terms of the solutions of Q, R, and S. 
@@ -136,16 +141,14 @@ solution is some (well-behaved) function of that type.
 
 ##Software installation is hard (individual help needed)
 
+Needed:
 * https://www.haskell.org/platform/
-
-* An editor
-
-I use [emacs](http://www.gnu.org/software/emacs/) but it might be easier to start with
-* Windows: [Notepad++](http://notepad-plus-plus.org/)
-* Linux: [gedit](http://en.wikipedia.org/wiki/Gedit)
-* MacOS: ?
-
-* A terminal (or winghci on Windows)
+* An editor: I use [emacs](http://www.gnu.org/software/emacs/) but it might be easier to start with
+  * Windows: [Notepad++](http://notepad-plus-plus.org/)
+  * Linux: [gedit](http://en.wikipedia.org/wiki/Gedit)
+  * MacOS: ?
+* A terminal for the interpreter, or some IDE
+** Included in the platform on Windows is winghci
 
 ---
 
