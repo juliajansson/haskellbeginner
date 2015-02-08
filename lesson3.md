@@ -21,5 +21,7 @@ functions using them.
 
 #Lists and recursion
 
-
+#If you wonder anything about Haskell
+Haskel has it's own search engine!
+[Hoogle](https://www.haskell.org/hoogle/)
 
