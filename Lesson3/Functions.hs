@@ -1,17 +1,17 @@
 module Functions where
 
-type real = Double
+type Number = Double
 
-squareArea :: real -> real
+squareArea :: Number -> Number
 squareArea side = side*side
 
-test1 :: real
+test1 :: Number
 test1 = squareArea 5
   
-circleArea :: real -> real
+circleArea :: Number -> Number
 circleArea radius = pi * radius * radius
 
-test2 :: real
+test2 :: Number
 test2 = circleArea 1
   
 ageSum :: Int -> Int -> Int
