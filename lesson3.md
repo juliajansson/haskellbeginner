@@ -24,6 +24,8 @@ functions using them.
 Finally, in [Lists](Lesson3/Lists.hs) we define our first recursive
 datatype and associated functions.
 
+#Hoogle - for searching Haskell 
 
-
+If you want to look up something, Haskell has it's own search engine!
+[Hoogle](https://www.haskell.org/hoogle/)
 
