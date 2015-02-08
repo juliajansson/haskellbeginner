@@ -80,7 +80,10 @@ solution is some (well-behaved) function of that type.
 
 #Time for software installation
 
-(To be filled in)
+[Installing the Haskell Platform](http://www.haskell.org/platform/) is
+a bit different depending on the operating system on your computer:
+* [Ubuntu](haskellonubuntu.md)
+* [Windows](haskellonwindows.md)
 
 Some instructions are available here:
 * https://sites.google.com/site/graphicalhaskell/lesson-1-getting-started
