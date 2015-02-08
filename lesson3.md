@@ -11,15 +11,19 @@ In this lesson we will focus on functions, types and lists.
 
 #Simple functions and their types
 
-In [Lesson3/Functions.hs] there is a sequence of functions definitions
+In [Functions.hs](Lesson3/Functions.hs) there is a sequence of functions definitions
 used to introduce the syntax step by step.
 
 #Make your own types
 
-[Lesson3/Datatypes.hs] explores how you can define your own types and
+[Datatypes.hs](Lesson3/Datatypes.hs) explores how you can define your own types and
 functions using them.
 
 #Lists and recursion
+
+Finally, in [Lists](Lesson3/Lists.hs) we define our first recursive
+datatype and associated functions.
+
 
 
 
