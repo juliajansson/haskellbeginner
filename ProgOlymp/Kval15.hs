@@ -151,8 +151,35 @@ Antal operationer 3
 (((x+1)-x)/2)=Nej
 -}
 
-antalOp :: Int
+-- antalOp :: Int
+-- en operation bestr av: ett tecken (+, -, *, /) och (antingen en siffra eller "x")
+-- (Tecken, KanskeSiffra)
 
+type Operation = (Tecken, KanskeSiffra)
+data Tecken = Plus | Minus | Gånger | Delat
+data KanskeSiffra = Siffra Int | X
+type Indata = [Operation]
+
+op1 :: Operation
+op1 = (Minus, Siffra 1)
+
+op2 :: Operation
+op2 = (Gånger, X)
+
+exdata :: Indata
+exdata = [op1, op2]
+
+beräknaI :: Indata -> (Rational -> Rational)
+beräknaI ops i = error "snart!"
+beräknaI [op] i = beräknaO op i
+
+beräknaO :: Operation -> (Rational -> Rational)
+beräknaO (Minus, Siffra s) x = x - fromIntegral s
+beräknaO (Plus, Siffra s) x = x + fromIntegral s
+beräknaO (Gånger, Siffra s) x = x * fromIntegral s
+beräknaO (Delat, Siffra s) x = x / fromIntegral s
+
+{-
 bs :: [Int]
 bs = [antalOp,op1,op2,op3,op4,op5,op6,op7,op8,op9,op10]
 
@@ -160,9 +187,9 @@ list :: [Int]
 list = take (antalOp+1) bs
 
 svar :: Int -> Int
-svar resultat1 = resultat1 | resultat1=heltal
-        	 resultat1 | resultat1=resultat2
-  			   else svar="Nej"
+svar = resultat1 | resultat1=heltal
+       resultat1 | resultat1=resultat2
+  	         else svar="Nej"
 
 --resultat1 testas alla operationer med x=1 och resultat2 med x=2
 
@@ -173,4 +200,5 @@ resultat2 :: [Int] -> Int -> Int
 resultat2 list 2 =
 
 -- if antalOp=10 then (op10(op9(op8(op7(op6(op5(op4(op3(op2(op1 x) 
+-}
 
