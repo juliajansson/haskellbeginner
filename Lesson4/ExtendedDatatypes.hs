@@ -65,8 +65,19 @@ test2 = checkIn g2
 list1 :: [Guest]
 list1 = [g1,g2,g3,g4]
 
+list2 :: [Guest]
+list2 = [g1,g2,g3]
+
 test3 :: [Weekday]
 test3 = map checkIn list1
 
 test4 :: [Extend Weekday]
-test4 = map checkOut list1 
+test4 = map checkOut list2
+
+{-Why doesn't this work?
+test5 :: [Extend Weekday]
+test5 = checkOut g4
+
+list3 :: [Extend Weekday]
+list3 = [test1, test5]
+-}

@@ -104,3 +104,101 @@ test2 = kontroll 7 [5, 4, 4] ex2
 
 {- Ett sätt att nu hitta listan med djup är att testa alla möjliga
 listor av djup (mellan 1 och n-1) till någon passerar kontrollen. -}
+
+
+
+
+{- Uppgift 6
+Programmet ska fråga efter ett heltal N (1 ≤ N ≤ 10) – antalet operationer som magi-
+tricket består av. Därefter ska det fråga efter var och en av de N operationerna. Varje
+operation beskrivs med hjälp av två mellanslagsseparerade tecken. Det första tecknet
+kommer att vara ett av ‘+’, ‘-’, ‘*’ och ‘/’, och beskriver operationen som utförs. Det andra
+tecknet anger talet operationen utförs med, och kommer att vara antingen en siffra 0-9,
+eller ett ‘x’. I det senare fallet ska du utföra operationen med talet som man ursprungli-
+gen tänkte på i stället.
+Du kommer aldrig få kommandot “/ x” eller “/ 0”.
+Om magitricket fungerar, d.v.s. om man alltid får samma tal i slutet oavsett vad man
+började med, och det talet dessutom är ett heltal, ska programmet skriva ut talet. I
+annat fall ska det skriva ut “Nej”. Observera att det enbart är sluttalet som måste vara
+ett heltal – tal som uppträder i uträkningen behöver inte vara det.
+
+Körningsexempel 1
+Antal operationer: 6
+((((((x-1)*3)+9)/3)+5)-x)=7
+
+Körningsexempel 2
+Antal: 6
+((((((x-1)*3)+9)/2)+5)-x)=Nej
+
+Körningexempel 3
+Antal: 6
+((((((x+2)-x)*x)/2)+3)-x)=3
+
+Körningsexempel 4
+Antal: 5
+(((((x+7)*x)*0)*x)-7)=-7
+
+Körningsexempel 5
+Antal: 1
+(x*x)=Nej
+
+Körningsexempel 6
+Antal: 4
+((((x*3)/3)-x)+5)=5
+
+Körningsexempel 7
+Antal operationer 3
+(((x+1)-x)/2)=Nej
+-}
+
+-- antalOp :: Int
+-- en operation bestr av: ett tecken (+, -, *, /) och (antingen en siffra eller "x")
+-- (Tecken, KanskeSiffra)
+
+type Operation = (Tecken, KanskeSiffra)
+data Tecken = Plus | Minus | Gånger | Delat
+data KanskeSiffra = Siffra Int | X
+type Indata = [Operation]
+
+op1 :: Operation
+op1 = (Minus, Siffra 1)
+
+op2 :: Operation
+op2 = (Gånger, X)
+
+exdata :: Indata
+exdata = [op1, op2]
+
+beräknaI :: Indata -> (Rational -> Rational)
+beräknaI ops i = error "snart!"
+beräknaI [op] i = beräknaO op i
+
+beräknaO :: Operation -> (Rational -> Rational)
+beräknaO (Minus, Siffra s) x = x - fromIntegral s
+beräknaO (Plus, Siffra s) x = x + fromIntegral s
+beräknaO (Gånger, Siffra s) x = x * fromIntegral s
+beräknaO (Delat, Siffra s) x = x / fromIntegral s
+
+{-
+bs :: [Int]
+bs = [antalOp,op1,op2,op3,op4,op5,op6,op7,op8,op9,op10]
+
+list :: [Int]
+list = take (antalOp+1) bs
+
+svar :: Int -> Int
+svar = resultat1 | resultat1=heltal
+       resultat1 | resultat1=resultat2
+  	         else svar="Nej"
+
+--resultat1 testas alla operationer med x=1 och resultat2 med x=2
+
+resultat1 :: [Int] -> Int -> Int
+resultat1 list 1 =
+
+resultat2 :: [Int] -> Int -> Int
+resultat2 list 2 =
+
+-- if antalOp=10 then (op10(op9(op8(op7(op6(op5(op4(op3(op2(op1 x) 
+-}
+
