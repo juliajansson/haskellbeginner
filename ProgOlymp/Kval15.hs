@@ -1,4 +1,5 @@
-module Kval15 where
+import Data.Char (ord, chr)
+--module Kval15 where
 
 {- Uppgift 4: I den nyss avslutande tävling Databävern fick eleverna
 se ett exempel på djurens märkliga samspel: En grupp på N bävrar ...
@@ -168,11 +169,11 @@ op2 = (Gånger, X)
 
 exdata :: Indata
 exdata = [op1, op2]
-
+{-
 beräknaI :: Indata -> (Rational -> Rational)
 beräknaI ops i = error "snart!"
 beräknaI [op] i = beräknaO op i
-
+-}
 beräknaO :: Operation -> (Rational -> Rational)
 beräknaO (Minus, Siffra s) x = x - fromIntegral s
 beräknaO (Plus, Siffra s) x = x + fromIntegral s
@@ -201,4 +202,45 @@ resultat2 list 2 =
 
 -- if antalOp=10 then (op10(op9(op8(op7(op6(op5(op4(op3(op2(op1 x) 
 -}
+
+{-
+Gömda ord
+Anna skickar hemliga krypterade meddelanden till Bert. För att kunna läsa meddelan-
+dena måste Bert dekryptera dem med följande algoritm:
+• Första bokstaven i indata-strängen tas med i utdatasträngen.
+• Varje bokstav som man tar med beskriver var i indatasträngen nästa bokstav
+finns som ska tas med. Ett ‘A’ betyder att nästa bokstav finns 1 position fram,
+ett ‘B’ innebär 2 positioner fram osv.
+• När man kommit till den sista bokstaven i indatasträngen så tar man med den
+bokstaven och är klar. Indatan är sådan att man alltid kommer till den sista
+bokstaven.
+Hjälp Bert genom att skriva ett program som dekrypterar Annas meddelanden.
+Programmet ska fråga efter den krypterade strängen (högst 50 tecken, versaler A-Z) och
+skriva ut klartexten (den avkrypterade strängen). Strängen kommer kunna avkrypteras
+med ovan beskrivna algoritm utan att man trillar över sista bokstaven.
+
+indata:ABKBFA
+utdata:ABBA
+
+indata:HZBKRYAFEAAAAJ
+utdata:HEJ
+-}
+
+encode::[Char]->[Char]
+encode (x:xs)=(x:next (biglet2int x) xs)
+       
+
+next::Int->[Char]->[Char]
+next a (x:xs)|a==0 =[x]
+             |otherwise =next (a-1) xs
+--next 1 [1,2]=[2 ]
+
+
+--int2Let (mod(biglet2int c+n)26)
+ 
+int2Let:: Int -> Char
+int2Let n = chr (ord 'A'+n)
+biglet2int:: Char -> Int
+biglet2int c = ord c - ord 'A'
+
 
