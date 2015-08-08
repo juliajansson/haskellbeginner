@@ -237,12 +237,20 @@ delist [x]=x
 next::Int->[Char]->[Char]
 next a (y:x:xs)|a==0 =[x]
                |otherwise =next (a-1) xs
+
 {-
 encode "ABKBFA"=(x:a:b)=(A:delist(next(biglet2int A) "ABKBFA"):next (biglet2int a) xs)=(A:B:next(biglet2int B)"BKBFA"=(A:B:next 1 "BKBFA")=(A:B:next 0 "KBFA")= 
-
 -}
 --next 1 [1,2]=[2]
-
+--Wishful thinking!
+{-
+decipher::[Char]->[Char]
+decipher []=[]
+decipher [c]=[c]
+decipher (a:b:bs)|biglet2int a==0 and biglet2int b==0=(a:b:decipher bs)
+                 |biglet2int a==1=(a:decipher bs)
+-}               
+--decipher "ABKBFA"=decipher (A:B:KBFA)=(A:B:decipher (K:B:FA))=(A:B
 
 --int2Let (mod(biglet2int c+n)26)
  
