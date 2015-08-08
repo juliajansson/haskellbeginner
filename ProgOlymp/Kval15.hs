@@ -227,13 +227,21 @@ utdata:HEJ
 -}
 
 encode::[Char]->[Char]
-encode (x:xs)=(x:next (biglet2int x) xs)
+encode (x:xs)=(x:a:b)
+     where a=delist (next (biglet2int x) (x:xs))
+           b=next (biglet2int a) xs
        
+delist::[a]->a
+delist [x]=x
 
 next::Int->[Char]->[Char]
-next a (x:xs)|a==0 =[x]
-             |otherwise =next (a-1) xs
---next 1 [1,2]=[2 ]
+next a (y:x:xs)|a==0 =[x]
+               |otherwise =next (a-1) xs
+{-
+encode "ABKBFA"=(x:a:b)=(A:delist(next(biglet2int A) "ABKBFA"):next (biglet2int a) xs)=(A:B:next(biglet2int B)"BKBFA"=(A:B:next 1 "BKBFA")=(A:B:next 0 "KBFA")= 
+
+-}
+--next 1 [1,2]=[2]
 
 
 --int2Let (mod(biglet2int c+n)26)
