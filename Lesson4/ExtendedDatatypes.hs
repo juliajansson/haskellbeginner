@@ -20,7 +20,7 @@ weekEnd _        = False
 type Name = String
 
 -- | Hog's Head Inn guest datatype
-data Guest = Single Weekday Weekday Name 
+data Guest = Single Weekday Weekday Name
            | Couple Weekday Weekday Name Name
   deriving Show
 
@@ -74,10 +74,8 @@ test3 = map checkIn list1
 test4 :: [Extend Weekday]
 test4 = map checkOut list2
 
-{-Why doesn't this work?
-test5 :: [Extend Weekday]
+test5 :: Extend Weekday
 test5 = checkOut g4
 
 list3 :: [Extend Weekday]
-list3 = [test1, test5]
--}
+list3 = [Normal test1, test5]

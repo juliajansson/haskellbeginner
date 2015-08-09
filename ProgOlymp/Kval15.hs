@@ -65,7 +65,7 @@ efter_hål_3 = reverse [4,1,2,3] ++ [6,7,5]
 -- Egenskap: bs = take d bs ++ drop d bs
 -- is = resten ++ reverse hålet
 --kör_ett_hål_baklänges
-k1hb:: Int -> Bävrar -> Bävrar
+k1hb :: Int -> Bävrar -> Bävrar
 k1hb d bs = resten ++ reverse hålet
   where hålet  = take d bs
         resten = drop d bs
@@ -175,10 +175,10 @@ beräknaI ops i = error "snart!"
 beräknaI [op] i = beräknaO op i
 -}
 beräknaO :: Operation -> (Rational -> Rational)
-beräknaO (Minus, Siffra s) x = x - fromIntegral s
-beräknaO (Plus, Siffra s) x = x + fromIntegral s
+beräknaO (Minus,  Siffra s) x = x - fromIntegral s
+beräknaO (Plus,   Siffra s) x = x + fromIntegral s
 beräknaO (Gånger, Siffra s) x = x * fromIntegral s
-beräknaO (Delat, Siffra s) x = x / fromIntegral s
+beräknaO (Delat,  Siffra s) x = x / fromIntegral s
 
 {-
 bs :: [Int]
@@ -200,7 +200,7 @@ resultat1 list 1 =
 resultat2 :: [Int] -> Int -> Int
 resultat2 list 2 =
 
--- if antalOp=10 then (op10(op9(op8(op7(op6(op5(op4(op3(op2(op1 x) 
+-- if antalOp=10 then (op10(op9(op8(op7(op6(op5(op4(op3(op2(op1 x)
 -}
 
 {-
@@ -226,20 +226,20 @@ indata:HZBKRYAFEAAAAJ
 utdata:HEJ
 -}
 
-encode::[Char]->[Char]
+encode :: [Char]->[Char]
 encode (x:xs)=(x:a:b)
      where a=delist (next (biglet2int x) (x:xs))
            b=next (biglet2int a) xs
-       
-delist::[a]->a
-delist [x]=x
 
-next::Int->[Char]->[Char]
-next a (y:x:xs)|a==0 =[x]
-               |otherwise =next (a-1) xs
+delist :: [a]->a
+delist [x] = x
+
+next :: Int->[Char]->[Char]
+next a (y:x:xs)|a==0      = [x]
+               |otherwise = next (a-1) xs
 
 {-
-encode "ABKBFA"=(x:a:b)=(A:delist(next(biglet2int A) "ABKBFA"):next (biglet2int a) xs)=(A:B:next(biglet2int B)"BKBFA"=(A:B:next 1 "BKBFA")=(A:B:next 0 "KBFA")= 
+encode "ABKBFA"=(x:a:b)=(A:delist(next(biglet2int A) "ABKBFA"):next (biglet2int a) xs)=(A:B:next(biglet2int B)"BKBFA"=(A:B:next 1 "BKBFA")=(A:B:next 0 "KBFA")=
 -}
 --next 1 [1,2]=[2]
 --Wishful thinking!
@@ -249,14 +249,12 @@ decipher []=[]
 decipher [c]=[c]
 decipher (a:b:bs)|biglet2int a==0 and biglet2int b==0=(a:b:decipher bs)
                  |biglet2int a==1=(a:decipher bs)
--}               
+-}
 --decipher "ABKBFA"=decipher (A:B:KBFA)=(A:B:decipher (K:B:FA))=(A:B
 
 --int2Let (mod(biglet2int c+n)26)
- 
-int2Let:: Int -> Char
+
+int2Let :: Int -> Char
 int2Let n = chr (ord 'A'+n)
-biglet2int:: Char -> Int
+biglet2int :: Char -> Int
 biglet2int c = ord c - ord 'A'
-
-
