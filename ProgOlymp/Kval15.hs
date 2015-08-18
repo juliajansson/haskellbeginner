@@ -1,5 +1,5 @@
+module Kval15 where
 import Data.Char (ord, chr)
---module Kval15 where
 
 {- Uppgift 4: I den nyss avslutande tävling Databävern fick eleverna
 se ett exempel på djurens märkliga samspel: En grupp på N bävrar ...
@@ -106,8 +106,13 @@ test2 = kontroll 7 [5, 4, 4] ex2
 {- Ett sätt att nu hitta listan med djup är att testa alla möjliga
 listor av djup (mellan 1 och n-1) till någon passerar kontrollen. -}
 
+{-
+djuplista::Int->Bävrar->[Int]->Djupen
+djuplista x ds bs|kontroll x ds bs=ds
+                 |otherwise       =djuplista x (next ds) bs
 
-
+next ds
+-}
 
 {- Uppgift 6
 Programmet ska fråga efter ett heltal N (1 ≤ N ≤ 10) – antalet operationer som magi-
@@ -175,33 +180,34 @@ beräknaI ops i = error "snart!"
 beräknaI [op] i = beräknaO op i
 -}
 beräknaO :: Operation -> (Rational -> Rational)
-beräknaO (Minus, Siffra s) x = x - fromIntegral s
-beräknaO (Plus, Siffra s) x = x + fromIntegral s
+beräknaO (Minus, Siffra s) x  = x - fromIntegral s
+beräknaO (Plus, Siffra s) x   = x + fromIntegral s
 beräknaO (Gånger, Siffra s) x = x * fromIntegral s
-beräknaO (Delat, Siffra s) x = x / fromIntegral s
+beräknaO (Delat, Siffra s) x  = x / fromIntegral s
+beräknaO (Tecken, X) x        = op x x
 
-{-
-bs :: [Int]
-bs = [antalOp,op1,op2,op3,op4,op5,op6,op7,op8,op9,op10]
+--Indata:
+--antalOp
+ops :: [Int]
+ops = [op1,op2,op3,op4,op5,op6,op7,op8,op9,op10]
 
 list :: [Int]
-list = take (antalOp+1) bs
+list = take antalOp ops
 
 svar :: Int -> Int
-svar = resultat1 | resultat1=heltal
-       resultat1 | resultat1=resultat2
-  	         else svar="Nej"
+svar resultat1 |resultat1==Int && resultat1==resultat2 =resultat1
+  	       |otherwise                              ="Nej"
 
 --resultat1 testas alla operationer med x=1 och resultat2 med x=2
 
 resultat1 :: [Int] -> Int -> Int
-resultat1 list 1 =
+resultat1 list 1 =head list 1:head (drop 1 list) 1 
 
 resultat2 :: [Int] -> Int -> Int
-resultat2 list 2 =
+resultat2 list 2 =head list 2:head (drop 2 list) 2
 
 -- if antalOp=10 then (op10(op9(op8(op7(op6(op5(op4(op3(op2(op1 x) 
--}
+
 
 {-
 Gömda ord
@@ -226,10 +232,13 @@ indata:HZBKRYAFEAAAAJ
 utdata:HEJ
 -}
 
-encode::[Char]->[Char]
-encode (x:xs)=(x:a:b)
-     where a=delist (next (biglet2int x) (x:xs))
-           b=next (biglet2int a) xs
+decode::[Char]->[Char]
+decode []     = []
+decode (x:xs) = (x:decode rest)
+     where n = biglet2int x
+           rest = drop n xs
+--           a=delist (next n (x:xs))
+--           b=next (biglet2int a) xs
        
 delist::[a]->a
 delist [x]=x
@@ -249,7 +258,7 @@ decipher []=[]
 decipher [c]=[c]
 decipher (a:b:bs)|biglet2int a==0 and biglet2int b==0=(a:b:decipher bs)
                  |biglet2int a==1=(a:decipher bs)
--}               
+  -}        
 --decipher "ABKBFA"=decipher (A:B:KBFA)=(A:B:decipher (K:B:FA))=(A:B
 
 --int2Let (mod(biglet2int c+n)26)
