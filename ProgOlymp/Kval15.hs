@@ -1,4 +1,4 @@
-module Kval15 where
+--module Kval15 where
 import Data.Char (ord, chr)
 
 {- Uppgift 4: I den nyss avslutande tävling Databävern fick eleverna
