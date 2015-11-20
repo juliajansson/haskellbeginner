@@ -13,5 +13,5 @@ trianglar n=
 
 main = do putStr "Talet N ? "
           n <- readLn
-          putStrLn $ "Antal trianglar" ++ show (antaltrianglar n)
+          putStrLn $ "Antal trianglar" ++ show (antaltrianglartotalt n)
 --main får parse error
