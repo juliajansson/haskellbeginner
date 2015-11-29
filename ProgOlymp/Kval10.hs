@@ -14,3 +14,7 @@ kub2 m s= concatMap (\t -> map (t:) (kub2 (m-1) (s-t^3))) förstatalet
   where förstatalet=reverse (takeWhile ((<=s).(^3)) [1..])
 
 topp n = head (dropWhile ((<=1).length) (concatMap (\i -> kub2 i (n^3)) [1..]))
+
+main = do
+   n<-readLn
+   print (topp n)
