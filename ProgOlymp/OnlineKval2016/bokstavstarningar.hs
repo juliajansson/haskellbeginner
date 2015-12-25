@@ -12,14 +12,14 @@ readDictionary f = do  text <- readFile f
                        let set = Set.fromList words
                        return set
 {-
-main = do  
+main = do
   dict <- readDictionary dictionaryFileName
   let  isWord :: String -> Bool
        isWord w = Set.member w dict
 
        permutationWords :: String -> [String]
        permutationWords w = filter isWord (permutations w)
-    
+
   w <- getLine
   let  ws = permutationWords w
        sws = nub ws
@@ -33,7 +33,7 @@ showPair :: (Int, String) -> String
 showPair (i, s) = show i ++ ": " ++ s
 
 
-                   
+
 nubb :: Ord a => [a] -> [a]
 nubb = nub' . sort
 
@@ -59,13 +59,13 @@ has (x:xs) a
   | x == a    = 1
   | otherwise = has xs a
 
-kolla:: Eq a=> [a]->[a]->Int
-kolla [] _=0
-kolla _ []=0
-kolla (x:xs) ys=(has ys x)+(kolla xs ys)
+kolla :: Eq a=> [a]->[a]->Int
+kolla [] _ = 0
+kolla _ [] = 0
+kolla (x:xs) ys = has ys x  +  kolla xs ys
 
-solution'::[String]->Int
-solution' as=kollaTabell (fyllTabell as)
+solution' :: [String]->Int
+solution' as = kollaTabell (fyllTabell as)
 
 type Antal = Int
 type Tabell = Map.Map String Antal
@@ -80,8 +80,8 @@ kollaTabell = length . filter ((>1).snd) . Map.assocs
 kollaTabell' :: Tabell -> Int
 kollaTabell' = length . filter ((>2).snd) . Map.assocs
 
-gör::[String]->[String]->[String]
-gör as bs= (scrabble as)++(bs)
+gör :: [String]->[String]->[String]
+gör as bs= scrabble as  ++ bs
 {-
 dropNotSame::[String]->[String]->[String]
 dropNotSame [] []=[]
@@ -107,9 +107,9 @@ scrabble (as:bs:cs:ds:es:fs:gs:hs:is:js:ks:[])=scrabble11 as bs cs ds es fs gs h
 scrabble (as:bs:cs:ds:es:fs:gs:hs:is:js:ks:ls:[])=scrabble12 as bs cs ds es fs gs hs is js ks ls
 scrabble (as:bs:cs:ds:es:fs:gs:hs:is:js:ks:ls:ms:[])=scrabble13 as bs cs ds es fs gs hs is js ks ls ms
 
-scrabble2::String->String->[String]
-scrabble2 [] []=[]
-scrabble2 as bs=listpermutations [(x:y:[])|x<-as, y<-bs]
+scrabble2 :: String->String->[String]
+scrabble2 [] [] = []
+scrabble2 as bs = listpermutations [(x:y:[])|x<-as, y<-bs]
 
 scrabble1::[String]->String->[String]
 scrabble1 [] []=[]
@@ -212,4 +212,3 @@ main=do
   as<- mapM (\_ -> getLine) [1..n]
   bs<- mapM (\_ -> getLine) [1..m]
   print (solution as bs)
-

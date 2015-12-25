@@ -4,4 +4,4 @@ main=do
   print (add (read a) (read b))
 
 add:: Int->Int->Int
-add a b=a+b
+add a b = a+b

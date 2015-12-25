@@ -65,7 +65,7 @@ efter_hål_3 = reverse [4,1,2,3] ++ [6,7,5]
 -- Egenskap: bs = take d bs ++ drop d bs
 -- is = resten ++ reverse hålet
 --kör_ett_hål_baklänges
-k1hb:: Int -> Bävrar -> Bävrar
+k1hb :: Int -> Bävrar -> Bävrar
 k1hb d bs = resten ++ reverse hålet
   where hålet  = take d bs
         resten = drop d bs
@@ -107,7 +107,7 @@ test2 = kontroll 7 [5, 4, 4] ex2
 listor av djup (mellan 1 och n-1) till någon passerar kontrollen. -}
 
 {-
-djuplista::Int->Bävrar->[Int]->Djupen
+djuplista :: Int->Bävrar->[Int]->Djupen
 djuplista x ds bs|kontroll x ds bs=ds
                  |otherwise       =djuplista x (next ds) bs
 
@@ -175,38 +175,39 @@ op2 = (Gånger, X)
 exdata :: Indata
 exdata = [op1, op2]
 {-
-beräknaI :: Indata -> (Rational -> Rational)
+beräknaI :: Indata -> Rational -> Rational
 beräknaI ops i = error "snart!"
 beräknaI [op] i = beräknaO op i
 -}
-beräknaO :: Operation -> (Rational -> Rational)
-beräknaO (Minus, Siffra s) x  = x - fromIntegral s
-beräknaO (Plus, Siffra s) x   = x + fromIntegral s
+beräknaO :: Operation ->  Rational -> Rational
+beräknaO (Minus,  Siffra s) x = x - fromIntegral s
+beräknaO (Plus,   Siffra s) x = x + fromIntegral s
 beräknaO (Gånger, Siffra s) x = x * fromIntegral s
-beräknaO (Delat, Siffra s) x  = x / fromIntegral s
-beräknaO (Tecken, X) x        = op x x
+beräknaO (Delat,  Siffra s) x = x / fromIntegral s
+beräknaO (Tecken, X)        x = op x x
 
 --Indata:
+-- TODO
 --antalOp
 ops :: [Int]
-ops = [op1,op2,op3,op4,op5,op6,op7,op8,op9,op10]
+ops = [op1,op2] -- ,op3,op4,op5,op6,op7,op8,op9,op10]
 
 list :: [Int]
 list = take antalOp ops
 
-svar :: Int -> Int
+svar :: Int -> Int -- TODO fix the comparison of a value and a type
 svar resultat1 |resultat1==Int && resultat1==resultat2 =resultat1
   	       |otherwise                              ="Nej"
 
 --resultat1 testas alla operationer med x=1 och resultat2 med x=2
 
 resultat1 :: [Int] -> Int -> Int
-resultat1 list 1 =head list 1:head (drop 1 list) 1 
+resultat1 list 1 = head list 1 : (list !! 1) 1
 
 resultat2 :: [Int] -> Int -> Int
-resultat2 list 2 =head list 2:head (drop 2 list) 2
+resultat2 list 2 = head list 2 : (list !! 2) 2
 
--- if antalOp=10 then (op10(op9(op8(op7(op6(op5(op4(op3(op2(op1 x) 
+-- if antalOp=10 then (op10(op9(op8(op7(op6(op5(op4(op3(op2(op1 x)
 
 
 {-
@@ -232,40 +233,38 @@ indata:HZBKRYAFEAAAAJ
 utdata:HEJ
 -}
 
-decode::[Char]->[Char]
+decode :: String->String
 decode []     = []
-decode (x:xs) = (x:decode rest)
+decode (x:xs) = x:decode rest
      where n = biglet2int x
            rest = drop n xs
 --           a=delist (next n (x:xs))
 --           b=next (biglet2int a) xs
-       
-delist::[a]->a
-delist [x]=x
 
-next::Int->[Char]->[Char]
-next a (y:x:xs)|a==0 =[x]
-               |otherwise =next (a-1) xs
+delist :: [a]->a
+delist [x] = x
+
+next :: Int->String->String
+next a (y:x:xs) | a==0      = [x]
+                | otherwise = next (a-1) xs
 
 {-
-encode "ABKBFA"=(x:a:b)=(A:delist(next(biglet2int A) "ABKBFA"):next (biglet2int a) xs)=(A:B:next(biglet2int B)"BKBFA"=(A:B:next 1 "BKBFA")=(A:B:next 0 "KBFA")= 
+encode "ABKBFA"=(x:a:b)=(A:delist(next(biglet2int A) "ABKBFA"):next (biglet2int a) xs)=(A:B:next(biglet2int B)"BKBFA"=(A:B:next 1 "BKBFA")=(A:B:next 0 "KBFA")=
 -}
 --next 1 [1,2]=[2]
 --Wishful thinking!
 {-
-decipher::[Char]->[Char]
+decipher::String->String
 decipher []=[]
 decipher [c]=[c]
 decipher (a:b:bs)|biglet2int a==0 and biglet2int b==0=(a:b:decipher bs)
                  |biglet2int a==1=(a:decipher bs)
-  -}        
+  -}
 --decipher "ABKBFA"=decipher (A:B:KBFA)=(A:B:decipher (K:B:FA))=(A:B
 
 --int2Let (mod(biglet2int c+n)26)
- 
+
 int2Let:: Int -> Char
 int2Let n = chr (ord 'A'+n)
 biglet2int:: Char -> Int
 biglet2int c = ord c - ord 'A'
-
-
