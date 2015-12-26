@@ -1,6 +1,6 @@
 import Data.Char
-convert:: String->[Int]
-convert xs= map digitToInt xs
+convert :: String->[Int]
+convert = map digitToInt
 
 
 {-
